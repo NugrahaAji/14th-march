@@ -1,0 +1,85 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-primary);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.textContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Left align the text */
+    width: 100vw;
+    padding-left: clamp(24px, 15vw, 200px); /* Anchor text from the left gracefully */
+}
+
+.textWoii {
+    /* "Woii" inside pure container needs absolute to stay put,
+       but when nested inside textCombined, it shouldn't be pulled out of flow.
+       Let's manage it by applying absolute only to the direct h1 texts. */
+    color: #f7b7b7;
+    /* Deep burgundy red rose */
+    font-family: var(--font-heading);
+    /* Clean sans-serif for Woii */
+  font-size: clamp(56px, 9vw, 120px);
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.05em;
+    text-align: left;
+    white-space: nowrap;
+    margin: 0;
+}
+
+h1.textWoii {
+    position: absolute;
+    opacity: 0;
+}
+
+.textCombined {
+    position: absolute;
+    opacity: 0;
+    text-align: left;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.textEmeshh {
+    color: var(--color-bg);
+    /* Use deep burgundy red rose */
+    font-family: var(--font-heading);
+    /* Elegant serif font for emeshh */
+  font-size: clamp(56px, 9vw, 120px);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* Perspective for 3D flip-up */
+.textWoii,
+.textCombined {
+    perspective: 600px;
+    display: flex;
+    flex-wrap: nowrap; /* Prevent breaking to new line */
+    align-items: flex-end; /* Align texts along the bottom line */
+    gap: 0 0.15em;
+}
+
+.wordWrap {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.word {
+    display: inline-block;
+    transform-origin: center top;
+    will-change: transform, opacity;
+}

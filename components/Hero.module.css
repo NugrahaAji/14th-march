@@ -1,0 +1,192 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, #fdeaf0 0%, var(--color-bg) 70%);
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(227, 11, 92, 0.1) 0%, transparent 70%); /* Rose accented glow */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  animation: breathe 5s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(1.12); opacity: 0.75; }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.overline {
+  font-family: var(--font-body);
+  font-size: clamp(11px, 1.5vw, 14px);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.titleWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.floatingPhoto {
+  position: absolute;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+
+.photo1 {
+  width: min(18vw, 130px);
+  height: min(24vw, 170px);
+  top: -35%;
+  left: 8%;
+}
+
+.photo2 {
+  width: min(15vw, 110px);
+  height: min(20vw, 150px);
+  top: -15%;
+  right: 30%;
+}
+
+.photo3 {
+  width: min(17vw, 120px);
+  height: min(22vw, 160px);
+  bottom: -45%;
+  right: -8%;
+  z-index: 10;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(56px, 9vw, 150px);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.25em;
+  perspective: 600px;
+}
+
+.wordWrap {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.word {
+  display: inline-block;
+  transform-origin: center top;
+  will-change: transform, opacity;
+}
+
+.title .word:nth-child(3),
+.title .word:nth-child(4) {
+  color: var(--color-primary);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 2vw, 20px);
+  color: var(--color-text-mid);
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-light);
+  cursor: pointer;
+}
+
+.scrollText {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: clamp(42px, 13vw, 72px);
+  }
+  .glow { width: 320px; height: 320px; }
+  .subtitle {
+    font-size: 15px;
+    max-width: 90vw;
+  }
+
+  /* Shrink and reposition floating photos so they don't overlap title text */
+  .photo1 {
+    width: 22vw;
+    height: 28vw;
+    top: -10%;
+    left: 2%;
+  }
+  .photo2 {
+    width: 18vw;
+    height: 22vw;
+    top: -8%;
+    right: 5%;
+  }
+  .photo3 {
+    width: 20vw;
+    height: 26vw;
+    bottom: -30%;
+    right: -2%;
+  }
+
+  .scrollIndicator {
+    bottom: 20px;
+  }
+}

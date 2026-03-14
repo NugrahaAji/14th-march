@@ -1,0 +1,149 @@
+.section {
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  gap: 4vw;
+  padding: 0 6vw;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 10%, rgba(227, 11, 92, 0.05) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 80% 80%, rgba(128, 0, 32, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.header {
+  position: relative;
+  text-align: left;
+  z-index: 100;
+  padding-right: 2rem;
+}
+
+.overline {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 500;
+  color: var(--color-primary); /* Bold red rose color */
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+
+.sub {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.2vw, 18px);
+  color: var(--color-text-mid);
+  font-weight: 300;
+}
+
+.cardsWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.polaroid {
+  background: #fff;
+  padding: 16px 16px 60px;
+  box-shadow: 0 15px 40px rgba(128, 0, 32, 0.15); /* Rose-tinted stacked shadow */
+  border-radius: 4px;
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.photoFrame {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photoIcon {
+  font-size: clamp(40px, 8vw, 70px);
+  opacity: 0.9;
+}
+
+.caption {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 22px);
+  color: var(--color-primary); /* Red rose color for polaroid caption */
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    padding: 10vh 4vw 4vw;
+  }
+  .header {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 8vh 4vw 4vw;
+  }
+  .polaroid {
+    max-width: min(85vw, 420px);
+    padding: 12px 12px 52px;
+  }
+  .caption {
+    font-size: 16px;
+    bottom: 16px;
+  }
+  .heading {
+    font-size: clamp(28px, 8vw, 48px);
+  }
+}

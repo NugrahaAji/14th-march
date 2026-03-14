@@ -1,0 +1,135 @@
+.footer {
+    padding: clamp(80px, 12vw, 160px) 24px clamp(60px, 8vw, 100px);
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-primary-pale) 60%, #FDE8EE 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+
+.cursorGif {
+    position: fixed;
+    width: 120px;
+    height: auto;
+    border-radius: 4px;
+    z-index: 9999;
+    transition: opacity 0.2s ease;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Floating petals */
+.petals {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.petal {
+    position: absolute;
+    width: clamp(16px, 2.5vw, 28px);
+    height: clamp(24px, 3.5vw, 40px);
+    /* Rose red tinted floating petals */
+    background: radial-gradient(ellipse at 40% 30%, rgba(194, 30, 86, 0.25), rgba(227, 11, 92, 0.1));
+    border-radius: 50% 50% 40% 40%;
+    animation: floatPetal calc(8s + var(--i) * 1.3s) ease-in-out infinite alternate;
+    left: calc(6% + var(--i) * 12%);
+    top: calc(5% + (var(--i) * 20%));
+    /* removed nested modulo */
+    transform: rotate(calc(var(--i) * 45deg));
+    opacity: 0.6;
+}
+
+@keyframes floatPetal {
+    0% {
+        transform: rotate(calc(var(--i) * 45deg)) translateY(0px) scale(1);
+    }
+
+    50% {
+        transform: rotate(calc(var(--i) * 45deg + 15deg)) translateY(-18px) scale(1.05);
+    }
+
+    100% {
+        transform: rotate(calc(var(--i) * 45deg)) translateY(8px) scale(0.95);
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.heartWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    transform-origin: center;
+    will-change: transform;
+    filter: drop-shadow(0 4px 16px rgba(228, 100, 148, 0.3));
+}
+
+.quote {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(22px, 3.5vw, 36px);
+    color: var(--color-text);
+    font-weight: 500;
+    max-width: 700px;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.author {
+    font-family: var(--font-body);
+    font-size: clamp(12px, 1.5vw, 15px);
+    color: var(--color-text-light);
+    letter-spacing: 0.1em;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    margin: 8px auto;
+}
+
+.date {
+    font-family: var(--font-body);
+    font-size: clamp(11px, 1.4vw, 14px);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    font-weight: 400;
+}
+
+.signature {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(14px, 1.8vw, 18px);
+    color: var(--color-primary);
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  /* Cursor tracking GIF doesn't make sense on touch devices */
+  .cursorGif {
+    display: none;
+  }
+
+  .quote {
+    font-size: clamp(20px, 5.5vw, 28px);
+    max-width: 90vw;
+    padding: 0 8px;
+  }
+
+  .footer {
+    padding: 60px 20px 48px;
+  }
+}

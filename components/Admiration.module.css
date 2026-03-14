@@ -1,0 +1,125 @@
+.section {
+  padding: var(--section-padding) 24px;
+  background: var(--color-bg); /* Pure white background */
+  position: relative;
+}
+
+.inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.topDecor,
+.bottomDecor {
+  width: 200px;
+  margin: 0 auto 48px;
+  opacity: 0.7;
+}
+
+.bottomDecor {
+  margin: 48px auto 0;
+}
+
+.sidePhoto {
+  position: absolute;
+  right: 3%;
+  top: 25%;
+  width: min(35vw, 350px);
+  aspect-ratio: 4 / 5;
+  border-radius: 16px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transform: rotate(98deg);
+  opacity: 0;
+  will-change: transform, opacity;
+  z-index: 1;
+}
+
+.letter {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.line {
+  will-change: transform, opacity;
+}
+
+.salutation p {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(26px, 4vw, 40px);
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.paragraph p {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(17px, 2.2vw, 22px);
+  color: var(--color-text);
+  line-height: 1.85;
+  font-weight: 400;
+}
+
+.highlight {
+  text-align: center;
+  padding: 16px 0;
+}
+
+.blockquote {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(20px, 3vw, 30px);
+  color: var(--color-primary);
+  font-weight: 600;
+  border: none;
+  margin: 0;
+  padding: 28px 40px;
+  position: relative;
+  line-height: 1.5;
+  background: linear-gradient(135deg, var(--color-primary-pale), transparent);
+  border-radius: 16px;
+}
+
+.blockquote::before {
+  content: '\201C';
+  font-family: var(--font-heading);
+  font-size: 100px;
+  color: var(--color-primary-light);
+  position: absolute;
+  top: -20px;
+  left: 16px;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.closing p {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--color-text-mid);
+  line-height: 2;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .sidePhoto {
+    display: none; /* Hide side photo on mobile to avoid overlapping the letter text */
+  }
+
+  .inner {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .blockquote {
+    padding: 20px 24px;
+    font-size: 20px;
+  }
+  .blockquote::before {
+    font-size: 70px;
+    top: -10px;
+  }
+}

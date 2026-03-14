@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #FFFFFF;
+  --color-bg-secondary: #FAFAFA;
+  --color-primary: #800020; /* Deep Burgundy Rose */
+  --color-primary-light: #C21E56; /* Rose Red */
+  --color-primary-pale: #FDE8EE; /* Pale pinkish-white rose tint */
+  --color-secondary: #EADDD7;
+  --color-accent: #E30B5C; /* Vibrant Rose */
+  --color-text: #1a1a1a;
+  --color-text-mid: #555555;
+  --color-text-light: #888888;
+  --font-heading: var(--font-playfair), 'Georgia', serif;
+  --font-body: var(--font-lato), 'Helvetica Neue', sans-serif;
+  --section-padding: clamp(80px, 10vw, 140px);
+}
+
+html {
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-primary-light);
+  color: var(--color-text);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
